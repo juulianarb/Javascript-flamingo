@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel</title>
+    <script>
+
+        var senha = 2678;
+
+        var nomeHotel = prompt("Qual o nome do hotel?");
+        alert("O nome do Hotel é: " + nomeHotel);
+
+        var nomeUsuario = prompt("Por favor, informe o seu nome:");
+
+        function inicio() {
+            verificar_senha();
+            alert("Bem vindo ao Hotel " + nomeHotel + " ," + nomeUsuario + ". " + "É um imenso prazer ter você por aqui!");
+
+            var escolha = parseInt(prompt('Selecione uma opção: \n 1.) Valor da diária \n 2.) Sair'));
+
+            switch (escolha) {
+                // 1 - 
+                case 1: escolha = Valordiaria;
+                    Valordiaria();
+                    break;
+
+                case 2: escolha = sair;
+                    sair();
+                    break;
+
+
+            }
+
+            if (escolha <= 0 || isNaN(escolha) || escolha >= 3 || escolha === '') {
+                erro()
+            } else {
+                inicio()
+            }
+        }
+
+        function Valordiaria() {
+            var diaria = parseFloat(prompt('Qual o valor da diária?'));
+
+            if (isNaN(diaria) && diaria === '' && diaria <= 0) {
+                alert("Valor inválido " + nomeUsuario + ".");
+                inicio();
+            } else {
+                diasHospedagem();
+            }
+        }
+
+        function diasHospedagem() {
+
+            var dias = parseInt(prompt("Quantas diária serão necessarias?"));
+
+            if (isNaN(dias) && dias === '' && dias > 30 && dias <= 0) {
+                alert("Valor inválido");
+                inicio()
+            } else {
+                confirmaHospedagem()
+            }
+        }
+
+        function confirmaHospedagem() {
+
+            var nomeHospede = prompt("Qual o nome do hóspede?");
+            if (nomeHospede === '' || !isNaN(nomeHospede)) {
+                alert("Digite seu nome corretamente");
+                inicio()
+            }
+            var perguntaHospedagem = prompt(nomeHospede + ", você confirma a hospedagem para " + nomeHospede + " por " + dias + " dias? S/N");
+            if (perguntaHospedagem = 'S' && perguntaHospedagem == "Sim" || perguntaHospedagem == "sim") {
+                alert("Reserva efetuada com sucesso!");
+                inicio()
+            } else {
+                alert(nomeHospede + ", reserva não efetuada.");
+                inicio();
+            }
+        } 
+
+
+        function verificar_senha() {
+
+            var senhaUsuario = parseInt(prompt("Digite sua senha:"));
+
+            if (senhaUsuario !== senha || isNaN(senhaUsuario) || senhaUsuario === '') {
+                alert("Senha incorreta");
+                inicio();
+            }
+
+        }
+        function erro() {
+            alert('Por favor, informe um número entre 1 e 2');
+            inicio();
+        }
+
+        function sair() {
+            var confirma = confirm('Você deseja sair?');
+            if (confirma) {
+                alert("Muito obrigado e até logo," + nomeUsuario);
+                exit(0);
+            } else {
+                inicio();
+            }
+        }
+        
+        inicio();
+
+    </script>
+</head>
+
+</html>
